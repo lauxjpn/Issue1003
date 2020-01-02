@@ -35,6 +35,12 @@ namespace IssueConsoleTemplateNet472
                 entity.Property(e => e.Name)
                     .HasMaxLength(512)
                     .IsRequired();
+
+                entity.HasData(
+                    new IceCream { IceCreamId = 1, Name = "Vanilla" },
+                    new IceCream { IceCreamId = 2, Name = "Chocolate" },
+                    new IceCream { IceCreamId = 3, Name = "Strawberry" }
+                );
             });
         }
     }
@@ -45,17 +51,6 @@ namespace IssueConsoleTemplateNet472
         {
             using (var context = new Context())
             {
-                context.Database.EnsureDeleted();
-                context.Database.EnsureCreated();
-
-                context.IceCreams.AddRange(
-                    new IceCream { Name = "Vanilla" },
-                    new IceCream { Name = "Chocolate" },
-                    new IceCream { Name = "Strawberry" }
-                );
-
-                context.SaveChanges();
-
                 var iceCreams = context.IceCreams
                     .OrderBy(i => i.IceCreamId)
                     .ToList();
