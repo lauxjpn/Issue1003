@@ -20,7 +20,7 @@ namespace IssueConsoleTemplateNet472
         {
             optionsBuilder
                 .UseMySql("server=127.0.0.1;port=3306;user=root;password=;database=Issue1003",
-                    b => b.ServerVersion(new ServerVersion("8.0.18-mysql")))
+                    b => b.ServerVersion(new ServerVersion("10.4.11-mariadb")))
                 .UseLoggerFactory(LoggerFactory.Create(b => b
                     .AddConsole()
                     .AddFilter(level => level >= LogLevel.Information)))
